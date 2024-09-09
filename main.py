@@ -36,8 +36,9 @@ def make_gif():
 
     png_list = list(Path(os.path.join(os.path.dirname(__file__))).rglob("*.png"))
     png_list.sort()
-    process = [cv2.imread(str(i))[..., ::-1] for i in png_list]
-    imageio.mimsave(os.path.join(os.path.dirname(__file__), "langevin_dynamics.GIF") , process , duration = 1000/30)
+    process = [cv2.imread(str(i))[..., ::-1] for i in png_list if "SGLD_" in str(i)]
+    process += [process[-1]] * 60
+    imageio.mimsave(os.path.join(os.path.dirname(__file__), "langevin_dynamics.GIF"), process, duration = 1000/30, loop = 0)
     [os.remove(i) for i in png_list]
 
 
@@ -103,7 +104,7 @@ def main():
 
         plt.xlim(-1, 1.8)
         plt.ylim(0, 2.)
-        plt.savefig(os.path.join(os.path.dirname(__file__), f"{i:04d}.png"))
+        plt.savefig(os.path.join(os.path.dirname(__file__), f"SGLD_{i:04d}.png"))
         # plt.show()
         plt.close("all")
     
