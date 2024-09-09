@@ -1,9 +1,3 @@
----
-title: qw
-tags: [job-note]
-
----
-
 # Langevin Dynamics
 
 This repo. implements Stochastic Gradient Langevin Dynamics (SGLD, _aka_ Langevin Dynamics) in PyTorch with autograd.
@@ -37,6 +31,7 @@ simply run the python script `main.py`, and you will see the corresponding resul
 ## Illustration
 
 Here we define an easy case, $P(x) = \dfrac{\hat{P}(x)}{Z}$, where
+
 (1) we only consider $x \in [-0.7, 1.5]$
 
 (2) $\hat{P}(x) = (x-0.4)^4 - (x-0.2)^2 + 0.6$ (noting that it must be non-negative everywhere)
